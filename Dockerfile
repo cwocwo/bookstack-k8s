@@ -1,5 +1,5 @@
 FROM golang:1.13.3
-RUN apt install git && \
+RUN apt update && apt install git && \
     apt install zip && \
     apt install wget && \
     mkdir -p /go/src/github.com/TruthHun/ && \
