@@ -6,9 +6,8 @@ RUN apt update && apt install -y git && \
     cd /go/src/github.com/TruthHun/ && \
     git clone https://github.com/cwocwo/BookStack.git && \
     cd BookStack && \
-    go get -d -v ./... && \ 
-    ./build.sh 
-WORKDIR /go/src/github.com/TruthHun/
+    go get -d -v ./... 
+RUN ./build.sh 
 
 FROM ubuntu:18.04
 WORKDIR /opt/
