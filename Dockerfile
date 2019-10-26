@@ -1,13 +1,14 @@
 FROM golang:1.13.3
-mkdir -p /go/src/github.com/TruthHun/
-WORKDIR /go/src/github.com/TruthHun/
 RUN apt install git && \
     apt install zip && \
     apt install wget && \
+    mkdir -p /go/src/github.com/TruthHun/ && \
+    cd /go/src/github.com/TruthHun/ && \
     git clone https://github.com/cwocwo/BookStack.git && \
     cd BookStack && \
     go get -d -v ./... && \ 
     ./build.sh && \
+WORKDIR /go/src/github.com/TruthHun/
 
 FROM ubuntu:18.04
 RUN apt install ttf-wqy-zenhei && \
