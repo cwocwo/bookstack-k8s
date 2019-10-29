@@ -18,7 +18,7 @@ RUN apt update && apt install -y ttf-wqy-zenhei && \
     apt install -y python && \
     wget -nv -O- https://download.calibre-ebook.com/linux-installer.py | python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main()" && \
     apt install -y chromium-browser && \
-    apt install -y git && \
+    apt install -y git
 # COPY --from=builder /go/src/github.com/TruthHun/BookStack/conf/*.example ./conf/
 COPY --from=builder /go/src/github.com/TruthHun/BookStack/conf \ 
                     /go/src/github.com/TruthHun/BookStack/dictionary \ 
