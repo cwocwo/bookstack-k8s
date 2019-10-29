@@ -14,6 +14,8 @@ FROM ubuntu:18.04
 WORKDIR /opt/
 RUN apt update && apt install -y ttf-wqy-zenhei && \
     apt install -y fonts-wqy-microhei && \
+    apt install -y wget && \
+    apt install -y python && \
     wget -nv -O- https://download.calibre-ebook.com/linux-installer.py | python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main()" && \
     apt install -y chromium-browser && \
     apt install -y git && \
