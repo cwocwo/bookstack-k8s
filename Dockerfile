@@ -24,5 +24,7 @@ COPY --from=builder /go/src/github.com/TruthHun/BookStack/conf \
                     /go/src/github.com/TruthHun/BookStack/dictionary/views \ 
                     /go/src/github.com/TruthHun/BookStack/dictionary/crawl.js \ 
                     /go/src/github.com/TruthHun/BookStack/output/linux/BookStack \
+                    /go/src/github.com/TruthHun/BookStack/favicon.ico \
+                    /go/src/github.com/TruthHun/BookStack/LICENSE.md \
             ./
 RUN rm conf/*.go
