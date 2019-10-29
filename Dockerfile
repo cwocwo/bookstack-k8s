@@ -29,4 +29,4 @@ COPY --from=builder /go/src/github.com/TruthHun/BookStack/conf \
                     /go/src/github.com/TruthHun/BookStack/favicon.ico \
                     /go/src/github.com/TruthHun/BookStack/LICENSE.md \
             ./
-RUN rm conf/*.go
+# RUN rm conf/*.go
