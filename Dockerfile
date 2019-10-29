@@ -22,9 +22,9 @@ RUN apt update && apt install -y ttf-wqy-zenhei && \
 # COPY --from=builder /go/src/github.com/TruthHun/BookStack/conf/*.example ./conf/
 COPY --from=builder /go/src/github.com/TruthHun/BookStack/conf \ 
                     /go/src/github.com/TruthHun/BookStack/dictionary \ 
-                    /go/src/github.com/TruthHun/BookStack/dictionary/static \
-                    /go/src/github.com/TruthHun/BookStack/dictionary/views \ 
-                    /go/src/github.com/TruthHun/BookStack/dictionary/crawl.js \ 
+                    /go/src/github.com/TruthHun/BookStack/static \
+                    /go/src/github.com/TruthHun/BookStack/views \ 
+                    /go/src/github.com/TruthHun/BookStack/crawl.js \ 
                     /go/src/github.com/TruthHun/BookStack/output/linux/BookStack \
                     /go/src/github.com/TruthHun/BookStack/favicon.ico \
                     /go/src/github.com/TruthHun/BookStack/LICENSE.md \
