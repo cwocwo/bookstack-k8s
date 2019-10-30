@@ -1,6 +1,6 @@
 FROM golang:1.13.3 AS builder
 RUN apt update && apt install -y git && \
-    apt install -y zip && \
+#    apt install -y zip && \
     apt install -y wget && \
     mkdir -p /go/src/github.com/TruthHun/ && \
     cd /go/src/github.com/TruthHun/ && \
@@ -8,7 +8,13 @@ RUN apt update && apt install -y git && \
     cd BookStack && \
     go get -d -v ./...
 WORKDIR /go/src/github.com/TruthHun/BookStack/ 
-RUN ./build.sh 
+RUN mkdir dist && ./build.sh && \
+    cp -r conf dictionary static views dist/ && \
+    cp crawl.js output/linux/BookStack favicon.ico LICENSE.md dist/ && \
+    mv dist/conf/app.conf.example dist/conf/app.conf && \
+    mv dist/conf/oauth.conf.example dist/conf/oauth.conf && \
+    mv dist/conf/oss.conf.example dist/conf/oss.conf
+
 
 FROM ubuntu:18.04
 WORKDIR /opt/
@@ -20,13 +26,5 @@ RUN apt update && apt install -y ttf-wqy-zenhei && \
     apt install -y chromium-browser && \
     apt install -y git
 # COPY --from=builder /go/src/github.com/TruthHun/BookStack/conf/*.example ./conf/
-COPY --from=builder /go/src/github.com/TruthHun/BookStack/conf \ 
-                    /go/src/github.com/TruthHun/BookStack/dictionary \ 
-                    /go/src/github.com/TruthHun/BookStack/static \
-                    /go/src/github.com/TruthHun/BookStack/views \ 
-                    /go/src/github.com/TruthHun/BookStack/crawl.js \ 
-                    /go/src/github.com/TruthHun/BookStack/output/linux/BookStack \
-                    /go/src/github.com/TruthHun/BookStack/favicon.ico \
-                    /go/src/github.com/TruthHun/BookStack/LICENSE.md \
-            ./
+COPY --from=builder /go/src/github.com/TruthHun/BookStack/dist bookstack/ 
 # RUN rm conf/*.go
