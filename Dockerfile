@@ -27,4 +27,6 @@ RUN apt update && apt install -y ttf-wqy-zenhei && \
     apt install -y git
 # COPY --from=builder /go/src/github.com/TruthHun/BookStack/conf/*.example ./conf/
 COPY --from=builder /go/src/github.com/TruthHun/BookStack/dist bookstack/ 
+EXPOSE 8181
+CMD ['./BookStack']
 # RUN rm conf/*.go
