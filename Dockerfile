@@ -17,7 +17,6 @@ RUN mkdir dist && ./build.sh && \
 
 
 FROM ubuntu:18.04
-WORKDIR /opt/
 RUN apt update && apt install -y ttf-wqy-zenhei && \
     apt install -y fonts-wqy-microhei && \
     apt install -y wget && \
@@ -26,7 +25,9 @@ RUN apt update && apt install -y ttf-wqy-zenhei && \
     apt install -y chromium-browser && \
     apt install -y git
 # COPY --from=builder /go/src/github.com/TruthHun/BookStack/conf/*.example ./conf/
-COPY --from=builder /go/src/github.com/TruthHun/BookStack/dist bookstack/ 
+COPY --from=builder /go/src/github.com/TruthHun/BookStack/dist /opt/bookstack/ 
+COPY bookstack.sh /opt/bookstack/
 EXPOSE 8181
-CMD ['./BookStack']
+WORKDIR /opt/bookstack
+CMD ['bookstack.sh']
 # RUN rm conf/*.go
