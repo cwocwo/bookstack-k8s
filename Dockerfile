@@ -29,5 +29,5 @@ COPY --from=builder /go/src/github.com/TruthHun/BookStack/dist /opt/bookstack/
 COPY bookstack.sh /opt/bookstack/
 EXPOSE 8181
 WORKDIR /opt/bookstack
-CMD ['/opt/bookstack/bookstack.sh']
+CMD ["/opt/bookstack/bookstack.sh"]
 # RUN rm conf/*.go
