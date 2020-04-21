@@ -6,7 +6,7 @@ RUN apt update && apt install -y git && \
     cd /go/src/github.com/TruthHun/ && \
     git clone https://github.com/cwocwo/BookStack.git && \
     cd BookStack && \
-    git checkout -b v2.2 origin/v2.2 && \
+    git checkout -b v2.7 origin/v2.7 && \
     go get -d -v ./...
 WORKDIR /go/src/github.com/TruthHun/BookStack/ 
 RUN mkdir dist && ./build.sh && \
