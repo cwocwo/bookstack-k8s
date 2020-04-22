@@ -9,7 +9,7 @@ RUN apt update && apt install -y git && \
     git checkout v2.7 && \
     go get -d -v ./...
 WORKDIR /go/src/github.com/TruthHun/BookStack/ 
-RUN mkdir dist && ./build.sh && \
+RUN mkdir dist && sed -i 's/\r//' build.sh && ./build.sh && \
     cp -r conf dictionary static views dist/ && \
     cp crawl.js output/linux/BookStack favicon.ico LICENSE.md dist/ && \
     mv dist/conf/app.conf.example dist/conf/app.conf && \
